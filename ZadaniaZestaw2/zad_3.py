@@ -1,10 +1,47 @@
-def czy_parzysta(liczba):
-    return liczba % 2 == 0
+
+class Property:
+    area: str
+    rooms: int
+    price: float
+    address: str
+
+    def __init__(self, address, price, area, rooms):
+        self.area = area
+        self.rooms = rooms
+        self.price = price
+        self.address = address
 
 
-wynik = czy_parzysta(8)
+class House(Property):
+    plot: int
 
-if wynik:
-    print("Liczba parzysta")
-else:
-    print("Liczba nieparzysta")
+    def __init__(self, address, price, area, rooms, plot):
+        super().__init__(address, price, area, rooms)
+        self.plot = plot
+
+    def __str__(self):
+        return (
+            f"{self.address}, {self.price}, {self.area}, "
+            f"{self.rooms}, {self.plot}"
+        )
+
+
+class Flat(Property):
+    floor: int
+
+    def __init__(self, address, price, area, rooms, floor):
+        super().__init__(address, price, area, rooms)
+        self.floor = floor
+
+    def __str__(self):
+        return (
+            f"{self.address}, {self.price}, {self.area}, "
+            f"{self.rooms}, {self.floor}"
+        )
+
+
+house1 = House("Promienna 22 Katowice", "850000", "150", "5", "600")
+flat1 = Flat("Jasna 5A Katowice", "270000", "50", "2", "3")
+
+print(house1)
+print(flat1)
